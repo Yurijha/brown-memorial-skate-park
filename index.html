@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#e9e5db" />
+    <meta name="theme-color" content="#0065b2" />
     <meta
       name="description"
       content="Explore the skate park concept for Brown Memorial in Chicago's Chatham neighborhood, including the skate features, gathering areas, accessible entry, and stormwater landscape shown in the design."
@@ -11,15 +11,15 @@
     <title>Brown Memorial Skate Park — A Chatham Concept</title>
     <style>
       :root {
-        --paper: #e9e5db;
-        --ink: #16211c;
-        --muted: #5b655e;
-        --green: #253d31;
-        --green2: #496a50;
-        --lime: #c9e181;
-        --orange: #d95e3f;
-        --line: #b9b9aa;
-        --white: #f7f5ef;
+        --paper: #ffffff;
+        --ink: #3d3935;
+        --muted: #3d3935;
+        --blue: #0065b2;
+        --blue-dark: #00508c;
+        --green: #cedc00;
+        --earth: #b36924;
+        --line: #abcae9;
+        --white: #ffffff;
         --max: 1320px;
       }
       * {
@@ -67,7 +67,7 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        background: var(--orange);
+        background: var(--earth);
         display: grid;
         place-items: center;
         color: white;
@@ -97,14 +97,14 @@
           monospace;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: var(--green2);
+        color: var(--blue);
       }
       .eyebrow:before {
         content: '';
         display: inline-block;
         width: 25px;
         height: 1px;
-        background: var(--orange);
+        background: var(--earth);
         vertical-align: middle;
         margin: 0 10px 0 0;
       }
@@ -117,12 +117,12 @@
         max-width: 760px;
       }
       .hero h1 span {
-        color: var(--green2);
+        color: var(--blue);
       }
       .hero-copy {
         font-size: 17px;
         line-height: 1.65;
-        color: #465149;
+        color: #3d3935;
         max-width: 510px;
         margin: 0;
       }
@@ -151,14 +151,14 @@
       }
       .jump b {
         font-size: 18px;
-        color: var(--orange);
+        color: var(--earth);
         font-weight: 400;
       }
       .drawing-wrap {
         background: var(--white);
         padding: 20px 20px 14px;
-        border: 1px solid #d5d1c6;
-        box-shadow: 0 22px 60px #29362a12;
+        border: 1px solid #abcae9;
+        box-shadow: 0 22px 60px #3d39351a;
         position: relative;
       }
       .drawing-label {
@@ -174,7 +174,7 @@
         color: var(--muted);
       }
       .drawing-label span:last-child {
-        color: var(--orange);
+        color: var(--earth);
       }
       .plan-stage {
         position: relative;
@@ -194,14 +194,14 @@
         height: 28px;
         border: 0;
         border-radius: 50%;
-        background: var(--orange);
+        background: var(--earth);
         color: white;
         display: grid;
         place-items: center;
         cursor: pointer;
         box-shadow:
           0 2px 0 #fff,
-          0 0 0 1px #17251d55;
+          0 0 0 1px #3d393555;
         font:
           11px 'DM Mono',
           monospace;
@@ -213,13 +213,13 @@
       .map-pin:hover,
       .map-pin:focus-visible,
       .map-pin.active {
-        background: var(--green);
+        background: var(--blue-dark);
         transform: translate(-50%, -50%) scale(1.16);
-        outline: 2px solid var(--lime);
+        outline: 2px solid var(--green);
         outline-offset: 2px;
       }
       .map-pin:focus-visible {
-        outline: 3px solid var(--lime);
+        outline: 3px solid var(--green);
       }
       .plan-caption {
         display: flex;
@@ -246,7 +246,7 @@
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: var(--orange);
+        background: var(--earth);
       }
       .dot.green {
         background: var(--green);
@@ -293,13 +293,13 @@
       }
       .feature:hover,
       .feature.selected {
-        background: #dedace;
+        background: #f0f6fa;
       }
       .feature-num {
         font:
           11px 'DM Mono',
           monospace;
-        color: var(--orange);
+        color: var(--earth);
         padding-top: 3px;
       }
       .feature h3 {
@@ -317,13 +317,13 @@
       }
       .feature[aria-pressed='true'] h3:after {
         content: ' ↗';
-        color: var(--orange);
+        color: var(--earth);
         font:
           13px 'DM Mono',
           monospace;
       }
       .green-band {
-        background: var(--green);
+        background: var(--blue);
         color: var(--white);
         padding: 90px 0 98px;
         position: relative;
@@ -344,7 +344,7 @@
           0 0 0 64px #ffffff06;
       }
       .green-band .kicker {
-        color: var(--lime);
+        color: var(--white);
       }
       .green-band h2 {
         font:
@@ -357,7 +357,7 @@
       .green-band .lead {
         font-size: 16px;
         line-height: 1.7;
-        color: #d4ddd4;
+        color: #ffffff;
         max-width: 590px;
       }
       .principles {
@@ -376,7 +376,7 @@
         font:
           10px 'DM Mono',
           monospace;
-        color: var(--lime);
+        color: var(--white);
         letter-spacing: 0.12em;
       }
       .principle h3 {
@@ -388,7 +388,7 @@
       .principle p {
         font-size: 13px;
         line-height: 1.65;
-        color: #c4d0c7;
+        color: #ffffff;
         margin: 0;
         max-width: 290px;
       }
@@ -417,7 +417,7 @@
         font:
           12px 'DM Mono',
           monospace;
-        color: var(--orange);
+        color: var(--earth);
         padding-top: 2px;
       }
       .walk-row h3 {
@@ -434,7 +434,7 @@
         max-width: 580px;
       }
       .next {
-        background: #d9d7ca;
+        background: #abcae9;
         padding: 49px 0;
       }
       .next-inner {
@@ -471,7 +471,7 @@
       .modal {
         position: fixed;
         inset: 0;
-        background: #101a16dd;
+        background: #3d3935dd;
         display: none;
         place-items: center;
         padding: 24px;
@@ -498,7 +498,7 @@
         color: var(--muted);
       }
       .modal .kicker {
-        color: var(--orange);
+        color: var(--earth);
       }
       .modal h2 {
         font:
@@ -517,7 +517,7 @@
         font:
           11px 'DM Mono',
           monospace;
-        color: var(--green2);
+        color: var(--blue);
         letter-spacing: 0.1em;
         text-transform: uppercase;
         margin-top: 24px;
