@@ -178,14 +178,16 @@
       }
       .plan-stage {
         position: relative;
+        aspect-ratio: 761 / 540;
         background: #fff;
-        overflow: hidden;
+        overflow: visible;
         line-height: 0;
       }
       .plan-stage img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: contain;
       }
       .map-pin {
         position: absolute;
