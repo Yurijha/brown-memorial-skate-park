@@ -1,0 +1,13 @@
+{
+  "name": "brown-memorial-skate-park",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive concept presentation for the Brown Memorial skate park in Chatham, Chicago",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
