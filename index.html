@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e9e5db" />
+    <meta
+      name="description"
+      content="Explore the skate park concept for Brown Memorial in Chicago's Chatham neighborhood, including the skate features, gathering areas, accessible entry, and stormwater landscape shown in the design."
+    />
     <title>Brown Memorial Skate Park — A Chatham Concept</title>
     <style>
       :root {
@@ -14,158 +20,969 @@
         --orange: #d95e3f;
         --line: #b9b9aa;
         --white: #f7f5ef;
+        --max: 1320px;
       }
-      * { box-sizing: border-box; }
-      body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, sans-serif; }
-      a { color: inherit; }
-      button { font: inherit; }
-      .shell { max-width: 1320px; margin: auto; padding: 0 44px; }
-      .topbar { height: 74px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
-      .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-      .brand-mark { width: 32px; height: 32px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; color: white; }
-      .top-meta, .eyebrow, .kicker, .jump, .drawing-label, .plan-caption, .feature-num, .principle small, .walk-row .n, .footer { font-family: monospace; letter-spacing: .1em; text-transform: uppercase; }
-      .top-meta { font-size: 11px; color: var(--muted); }
-      .hero { padding: 64px 0 44px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: end; }
-      .eyebrow, .kicker { font-size: 11px; color: var(--green2); }
-      .eyebrow::before { content: ''; display: inline-block; width: 25px; height: 1px; margin: 0 10px 0 0; background: var(--orange); vertical-align: middle; }
-      h1, h2, h3 { font-family: Arial, sans-serif; }
-      .hero h1 { max-width: 760px; margin: 24px 0 22px; font-size: clamp(50px, 7.5vw, 104px); line-height: .91; letter-spacing: -.075em; }
-      .hero h1 span { color: var(--green2); }
-      .hero-copy { max-width: 510px; margin: 0; color: #465149; font-size: 17px; line-height: 1.65; }
-      .hero-side { max-width: 360px; margin-left: auto; padding: 7px 0 4px 27px; border-left: 1px solid var(--line); }
-      .hero-side p { margin: 10px 0 21px; color: var(--muted); font-size: 14px; line-height: 1.6; }
-      .jump { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; font-size: 11px; }
-      .jump b { color: var(--orange); font-size: 18px; font-weight: 400; }
-      .drawing-wrap { position: relative; padding: 20px 20px 14px; border: 1px solid #d5d1c6; background: var(--white); box-shadow: 0 22px 60px #29362a12; }
-      .drawing-label { display: flex; justify-content: space-between; align-items: center; padding: 3px 3px 13px; color: var(--muted); font-size: 10px; }
-      .drawing-label span:last-child { color: var(--orange); }
-      .plan-stage { position: relative; overflow: hidden; background: white; line-height: 0; }
-      .plan-stage img { display: block; width: 100%; height: auto; }
-      .map-pin { position: absolute; z-index: 2; display: grid; width: 28px; height: 28px; transform: translate(-50%, -50%); place-items: center; border: 0; border-radius: 50%; background: var(--orange); color: white; cursor: pointer; box-shadow: 0 2px 0 white, 0 0 0 1px #17251d55; font: 11px monospace; }
-      .map-pin:hover, .map-pin:focus-visible, .map-pin.active { transform: translate(-50%, -50%) scale(1.16); outline: 2px solid var(--lime); outline-offset: 2px; background: var(--green); }
-      .plan-caption { display: flex; justify-content: space-between; gap: 20px; padding: 13px 4px 0; color: var(--muted); font-size: 10px; }
-      .legend { display: flex; gap: 19px; }
-      .legend span { display: flex; align-items: center; gap: 7px; }
-      .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
-      .dot.green { background: var(--green); }
-      .explore { display: grid; grid-template-columns: .65fr 1.35fr; gap: 76px; padding: 104px 0 110px; border-bottom: 1px solid var(--line); }
-      .explore-intro h2, .section-heading h2 { margin: 17px 0; font-size: clamp(36px, 5vw, 62px); line-height: .98; letter-spacing: -.06em; }
-      .explore-intro p, .section-heading p { max-width: 400px; color: var(--muted); font-size: 15px; line-height: 1.7; }
-      .feature-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
-      .feature { display: grid; min-height: 136px; grid-template-columns: 35px 1fr; gap: 12px; padding: 22px 14px 22px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; text-align: left; cursor: pointer; }
-      .feature:nth-child(odd) { margin-right: 28px; }
-      .feature:hover, .feature.selected { background: #dedace; }
-      .feature-num { padding-top: 3px; color: var(--orange); font-size: 11px; }
-      .feature h3 { margin: 0 0 8px; font-size: 17px; }
-      .feature p { max-width: 330px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
-      .green-band { position: relative; overflow: hidden; padding: 90px 0 98px; background: var(--green); color: var(--white); }
-      .green-band::after { position: absolute; top: -160px; right: -85px; width: 520px; height: 520px; transform: rotate(-28deg); border: 1px solid #ffffff20; border-radius: 48% 52%; content: ''; box-shadow: 0 0 0 32px #ffffff08, 0 0 0 64px #ffffff06; }
-      .green-band .kicker, .principle small { color: var(--lime); }
-      .green-band h2 { max-width: 720px; margin: 20px 0 18px; font-size: clamp(42px, 6vw, 76px); line-height: .96; letter-spacing: -.065em; }
-      .green-band .lead { max-width: 590px; color: #d4ddd4; font-size: 16px; line-height: 1.7; }
-      .principles { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 51px; }
-      .principle { padding-top: 15px; border-top: 1px solid #ffffff4d; }
-      .principle small { font-size: 10px; }
-      .principle h3 { margin: 12px 0 8px; font-size: 19px; font-weight: 500; }
-      .principle p { max-width: 290px; margin: 0; color: #c4d0c7; font-size: 13px; line-height: 1.65; }
-      .walkthrough { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; padding: 98px 0 108px; }
-      .section-heading { position: sticky; top: 32px; align-self: start; }
-      .walk-list { border-top: 1px solid var(--line); }
-      .walk-row { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 23px 0; border-bottom: 1px solid var(--line); }
-      .walk-row .n { padding-top: 2px; color: var(--orange); font-size: 12px; }
-      .walk-row h3 { margin: 0 0 7px; font-size: 20px; font-weight: 500; }
-      .walk-row p { max-width: 580px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
-      .next { padding: 49px 0; background: #d9d7ca; }
-      .next-inner { display: flex; align-items: center; justify-content: space-between; gap: 36px; }
-      .next h2 { margin: 12px 0 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.05em; }
-      .next p { max-width: 420px; color: var(--muted); font-size: 14px; line-height: 1.65; }
-      .footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0 34px; color: var(--muted); font-size: 10px; }
-      .modal { position: fixed; z-index: 20; display: none; inset: 0; place-items: center; padding: 24px; background: #101a16dd; }
-      .modal.open { display: grid; }
-      .modal-box { position: relative; width: min(560px, 100%); padding: 32px; border: 1px solid #ffffff50; background: var(--paper); }
-      .modal-close { position: absolute; top: 14px; right: 16px; border: 0; background: none; color: var(--muted); font-size: 24px; cursor: pointer; }
-      .modal-box h2 { margin: 16px 0 10px; font-size: 32px; }
-      .modal-box p { color: var(--muted); font-size: 15px; line-height: 1.7; }
-      .modal-number { color: var(--orange); font: 11px monospace; letter-spacing: .12em; text-transform: uppercase; }
-      @media (max-width: 820px) { .shell { padding: 0 24px; } .hero { grid-template-columns: 1fr; gap: 28px; } .hero-side { margin-left: 0; } .explore, .walkthrough { grid-template-columns: 1fr; gap: 35px; padding: 72px 0; } .principles { gap: 22px; } .section-heading { position: static; } }
-      @media (max-width: 560px) { .shell { padding: 0 18px; } .top-meta { font-size: 9px; } .drawing-wrap { padding: 10px 10px 12px; } .plan-caption { font-size: 8px; } .legend { gap: 8px; } .feature-grid, .principles { grid-template-columns: 1fr; } .feature:nth-child(odd) { margin-right: 0; } .next-inner, .footer { align-items: flex-start; flex-direction: column; } }
-      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: 'DM Sans', sans-serif;
+      }
+      a {
+        color: inherit;
+      }
+      button {
+        font: inherit;
+      }
+      .shell {
+        max-width: var(--max);
+        margin: auto;
+        padding: 0 44px;
+      }
+      .topbar {
+        height: 74px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--orange);
+        display: grid;
+        place-items: center;
+        color: white;
+        font:
+          500 13px 'DM Mono',
+          monospace;
+      }
+      .top-meta {
+        font:
+          11px 'DM Mono',
+          monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hero {
+        padding: 64px 0 44px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 48px;
+        align-items: end;
+      }
+      .eyebrow,
+      .kicker {
+        font:
+          11px 'DM Mono',
+          monospace;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--green2);
+      }
+      .eyebrow:before {
+        content: '';
+        display: inline-block;
+        width: 25px;
+        height: 1px;
+        background: var(--orange);
+        vertical-align: middle;
+        margin: 0 10px 0 0;
+      }
+      .hero h1 {
+        font:
+          600 clamp(50px, 7.5vw, 104px) / 0.91 'Space Grotesk',
+          sans-serif;
+        letter-spacing: -0.075em;
+        margin: 24px 0 22px;
+        max-width: 760px;
+      }
+      .hero h1 span {
+        color: var(--green2);
+      }
+      .hero-copy {
+        font-size: 17px;
+        line-height: 1.65;
+        color: #465149;
+        max-width: 510px;
+        margin: 0;
+      }
+      .hero-side {
+        border-left: 1px solid var(--line);
+        padding: 7px 0 4px 27px;
+        max-width: 360px;
+        margin-left: auto;
+      }
+      .hero-side p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 10px 0 21px;
+        color: var(--muted);
+      }
+      .jump {
+        display: inline-flex;
+        align-items: center;
+        gap: 13px;
+        text-decoration: none;
+        font:
+          500 11px 'DM Mono',
+          monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .jump b {
+        font-size: 18px;
+        color: var(--orange);
+        font-weight: 400;
+      }
+      .drawing-wrap {
+        background: var(--white);
+        padding: 20px 20px 14px;
+        border: 1px solid #d5d1c6;
+        box-shadow: 0 22px 60px #29362a12;
+        position: relative;
+      }
+      .drawing-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3px 3px 13px;
+        font:
+          10px 'DM Mono',
+          monospace;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .drawing-label span:last-child {
+        color: var(--orange);
+      }
+      .plan-stage {
+        position: relative;
+        background: #fff;
+        overflow: hidden;
+        line-height: 0;
+      }
+      .plan-stage img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .map-pin {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 28px;
+        height: 28px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--orange);
+        color: white;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        box-shadow:
+          0 2px 0 #fff,
+          0 0 0 1px #17251d55;
+        font:
+          11px 'DM Mono',
+          monospace;
+        transition:
+          transform 0.18s,
+          background 0.18s;
+        z-index: 2;
+      }
+      .map-pin:hover,
+      .map-pin:focus-visible,
+      .map-pin.active {
+        background: var(--green);
+        transform: translate(-50%, -50%) scale(1.16);
+        outline: 2px solid var(--lime);
+        outline-offset: 2px;
+      }
+      .map-pin:focus-visible {
+        outline: 3px solid var(--lime);
+      }
+      .plan-caption {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 13px 4px 0;
+        color: var(--muted);
+        font:
+          10px 'DM Mono',
+          monospace;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .legend {
+        display: flex;
+        gap: 19px;
+      }
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--orange);
+      }
+      .dot.green {
+        background: var(--green);
+      }
+      .explore {
+        display: grid;
+        grid-template-columns: 0.65fr 1.35fr;
+        gap: 76px;
+        padding: 104px 0 110px;
+        border-bottom: 1px solid var(--line);
+      }
+      .explore-intro h2,
+      .section-heading h2 {
+        font:
+          500 clamp(36px, 5vw, 62px) / 0.98 'Space Grotesk',
+          sans-serif;
+        letter-spacing: -0.06em;
+        margin: 17px 0;
+      }
+      .explore-intro p,
+      .section-heading p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--muted);
+        max-width: 400px;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid var(--line);
+      }
+      .feature {
+        border-bottom: 1px solid var(--line);
+        padding: 22px 14px 22px 0;
+        min-height: 136px;
+        display: grid;
+        grid-template-columns: 35px 1fr;
+        gap: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .feature:nth-child(odd) {
+        margin-right: 28px;
+      }
+      .feature:hover,
+      .feature.selected {
+        background: #dedace;
+      }
+      .feature-num {
+        font:
+          11px 'DM Mono',
+          monospace;
+        color: var(--orange);
+        padding-top: 3px;
+      }
+      .feature h3 {
+        font:
+          600 17px 'Space Grotesk',
+          sans-serif;
+        margin: 0 0 8px;
+      }
+      .feature p {
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--muted);
+        margin: 0;
+        max-width: 330px;
+      }
+      .feature[aria-pressed='true'] h3:after {
+        content: ' ↗';
+        color: var(--orange);
+        font:
+          13px 'DM Mono',
+          monospace;
+      }
+      .green-band {
+        background: var(--green);
+        color: var(--white);
+        padding: 90px 0 98px;
+        position: relative;
+        overflow: hidden;
+      }
+      .green-band:after {
+        content: '';
+        position: absolute;
+        right: -85px;
+        top: -160px;
+        width: 520px;
+        height: 520px;
+        border: 1px solid #ffffff20;
+        border-radius: 48% 52% 48% 52%;
+        transform: rotate(-28deg);
+        box-shadow:
+          0 0 0 32px #ffffff08,
+          0 0 0 64px #ffffff06;
+      }
+      .green-band .kicker {
+        color: var(--lime);
+      }
+      .green-band h2 {
+        font:
+          500 clamp(42px, 6vw, 76px) / 0.96 'Space Grotesk',
+          sans-serif;
+        letter-spacing: -0.065em;
+        max-width: 720px;
+        margin: 20px 0 18px;
+      }
+      .green-band .lead {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #d4ddd4;
+        max-width: 590px;
+      }
+      .principles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px;
+        margin-top: 51px;
+        position: relative;
+        z-index: 1;
+      }
+      .principle {
+        border-top: 1px solid #ffffff4d;
+        padding-top: 15px;
+      }
+      .principle small {
+        font:
+          10px 'DM Mono',
+          monospace;
+        color: var(--lime);
+        letter-spacing: 0.12em;
+      }
+      .principle h3 {
+        font:
+          500 19px 'Space Grotesk',
+          sans-serif;
+        margin: 12px 0 8px;
+      }
+      .principle p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: #c4d0c7;
+        margin: 0;
+        max-width: 290px;
+      }
+      .walkthrough {
+        padding: 98px 0 108px;
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        gap: 70px;
+      }
+      .section-heading {
+        position: sticky;
+        top: 32px;
+        align-self: start;
+      }
+      .walk-list {
+        border-top: 1px solid var(--line);
+      }
+      .walk-row {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 16px;
+        padding: 23px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .walk-row .n {
+        font:
+          12px 'DM Mono',
+          monospace;
+        color: var(--orange);
+        padding-top: 2px;
+      }
+      .walk-row h3 {
+        font:
+          500 20px 'Space Grotesk',
+          sans-serif;
+        margin: 0 0 7px;
+      }
+      .walk-row p {
+        font-size: 14px;
+        line-height: 1.65;
+        color: var(--muted);
+        margin: 0;
+        max-width: 580px;
+      }
+      .next {
+        background: #d9d7ca;
+        padding: 49px 0;
+      }
+      .next-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 36px;
+        align-items: center;
+      }
+      .next h2 {
+        font:
+          500 clamp(28px, 4vw, 44px) / 1 'Space Grotesk',
+          sans-serif;
+        letter-spacing: -0.05em;
+        margin: 12px 0 0;
+      }
+      .next p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.65;
+        max-width: 420px;
+      }
+      .footer {
+        padding: 24px 0 34px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        font:
+          10px 'DM Mono',
+          monospace;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: #101a16dd;
+        display: none;
+        place-items: center;
+        padding: 24px;
+        z-index: 20;
+      }
+      .modal.open {
+        display: grid;
+      }
+      .modal-box {
+        background: var(--paper);
+        width: min(560px, 100%);
+        padding: 32px;
+        position: relative;
+        border: 1px solid #ffffff50;
+      }
+      .modal-close {
+        position: absolute;
+        right: 16px;
+        top: 14px;
+        border: 0;
+        background: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--muted);
+      }
+      .modal .kicker {
+        color: var(--orange);
+      }
+      .modal h2 {
+        font:
+          500 34px 'Space Grotesk',
+          sans-serif;
+        letter-spacing: -0.05em;
+        margin: 14px 35px 10px 0;
+      }
+      .modal p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 0;
+      }
+      .modal .modal-number {
+        font:
+          11px 'DM Mono',
+          monospace;
+        color: var(--green2);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 24px;
+      }
+      @media (max-width: 850px) {
+        .shell {
+          padding: 0 24px;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding-top: 48px;
+        }
+        .hero-side {
+          margin: 0 0 0 auto;
+          max-width: 500px;
+        }
+        .explore,
+        .walkthrough {
+          grid-template-columns: 1fr;
+          gap: 38px;
+        }
+        .section-heading {
+          position: static;
+        }
+        .explore {
+          padding: 74px 0;
+        }
+        .walkthrough {
+          padding: 76px 0;
+        }
+        .principles {
+          gap: 20px;
+        }
+        .next-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+      @media (max-width: 560px) {
+        .shell {
+          padding: 0 16px;
+        }
+        .topbar {
+          height: 62px;
+        }
+        .top-meta {
+          font-size: 9px;
+        }
+        .hero {
+          padding-top: 35px;
+        }
+        .hero h1 {
+          font-size: 54px;
+        }
+        .hero-copy {
+          font-size: 15px;
+        }
+        .hero-side {
+          padding-left: 17px;
+        }
+        .drawing-wrap {
+          padding: 9px 9px 10px;
+          margin: 0 -5px;
+        }
+        .drawing-label,
+        .plan-caption {
+          font-size: 8px;
+        }
+        .map-pin {
+          width: 24px;
+          height: 24px;
+          font-size: 10px;
+        }
+        .legend {
+          gap: 10px;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .feature:nth-child(odd) {
+          margin-right: 0;
+        }
+        .feature {
+          min-height: unset;
+          padding: 18px 0;
+        }
+        .principles {
+          grid-template-columns: 1fr;
+          gap: 26px;
+        }
+        .green-band {
+          padding: 67px 0;
+        }
+        .walk-row {
+          grid-template-columns: 34px 1fr;
+        }
+        .footer {
+          font-size: 8px;
+          flex-wrap: wrap;
+        }
+        .modal-box {
+          padding: 25px;
+        }
+      }
     </style>
   </head>
   <body>
-    <main>
-      <header class="shell topbar"><a class="brand" href="#top"><span class="brand-mark">B</span><span>Brown Memorial<br />Skate Park</span></a><div class="top-meta">Chatham · Chicago, Illinois</div></header>
-      <section class="shell hero" id="top">
-        <div><div class="eyebrow">A neighborhood concept</div><h1>A place to<br /><span>find your line.</span></h1><p class="hero-copy">A closer look at the proposed skate park for Brown Memorial in Chatham—where riding, gathering, and a greener landscape come together.</p></div>
-        <aside class="hero-side"><div class="kicker">Designed for the neighborhood</div><p>Explore the plan through the features shown in the design. Select a marker to see what each area brings to the park.</p><a class="jump" href="#features">Explore the plan <b>↓</b></a></aside>
+    <header class="topbar shell">
+      <a class="brand" href="#top" aria-label="Brown Memorial Skate Park home"
+        ><span class="brand-mark">BM</span><span>Brown Memorial<br />Skate Park</span></a
+      >
+      <div class="top-meta">Chatham · Chicago, Illinois</div>
+    </header>
+    <main id="top">
+      <section class="hero shell">
+        <div>
+          <div class="eyebrow">A place to skate · gather · grow</div>
+          <h1>Made for<br /><span>the flow.</span></h1>
+          <p class="hero-copy">
+            A visual introduction to the skate park concept for Brown Memorial in Chicago’s Chatham
+            neighborhood—where skating, community space, accessibility, and water-conscious
+            landscape meet.
+          </p>
+        </div>
+        <aside class="hero-side">
+          <div class="kicker">Read the design</div>
+          <p>
+            Explore the original concept drawing. Select a numbered point—or a feature below—to see
+            how each part of the plan contributes to the experience.
+          </p>
+          <a class="jump" href="#plan"><b>↓</b> Explore the park plan</a>
+        </aside>
       </section>
-      <section class="shell" aria-label="Park plan">
-        <div class="drawing-wrap"><div class="drawing-label"><span>Brown Memorial · Concept plan</span><span>Chatham, Chicago</span></div>
-          <div class="plan-stage"><img src="assets/brown-memorial-skate-park-plan.png" alt="Concept plan drawing for the Brown Memorial skate park, with a central skate area, shade and seating, accessible entry, and planted stormwater edges" />
-            <button class="map-pin" style="left: 78%; top: 51%" data-feature="access" aria-label="Explore accessible arrival">01</button><button class="map-pin" style="left: 29%; top: 39%" data-feature="shade" aria-label="Explore shade canopy">02</button><button class="map-pin" style="left: 50%; top: 46%" data-feature="flow" aria-label="Explore the skate flow area">03</button><button class="map-pin" style="left: 64%; top: 34%" data-feature="watch" aria-label="Explore spectator space">04</button><button class="map-pin" style="left: 29%; top: 79%" data-feature="water" aria-label="Explore rain garden">05</button><button class="map-pin" style="left: 64%; top: 79%" data-feature="landscape" aria-label="Explore stormwater landscape">06</button>
-          </div><div class="plan-caption"><span>Click a marker to explore</span><span class="legend"><span><i class="dot"></i>Place</span><span><i class="dot green"></i>Selected</span></span></div>
+      <section class="shell" id="plan" aria-label="Interactive park concept plan">
+        <div class="drawing-wrap">
+          <div class="drawing-label">
+            <span>Brown Memorial · concept plan</span
+            ><span>Illustrative design · not for construction</span>
+          </div>
+          <div class="plan-stage" id="planStage">
+            <img
+              src="assets/brown-memorial-skate-park-plan.png"
+              alt="Isometric concept drawing of the Brown Memorial skate park, with labeled skate elements, access route, gathering areas, and stormwater features"
+            />
+            <button
+              class="map-pin"
+              style="left: 24%; top: 43%"
+              data-feature="access"
+              aria-label="Explore accessible entry and stairs"
+            >
+              01</button
+            ><button
+              class="map-pin"
+              style="left: 29%; top: 39%"
+              data-feature="shade"
+              aria-label="Explore shade canopy"
+            >
+              02</button
+            ><button
+              class="map-pin"
+              style="left: 50%; top: 46%"
+              data-feature="flow"
+              aria-label="Explore the skate flow area"
+            >
+              03</button
+            ><button
+              class="map-pin"
+              style="left: 64%; top: 34%"
+              data-feature="watch"
+              aria-label="Explore spectator space"
+            >
+              04</button
+            ><button
+              class="map-pin"
+              style="left: 29%; top: 79%"
+              data-feature="water"
+              aria-label="Explore rain garden"
+            >
+              05</button
+            ><button
+              class="map-pin"
+              style="left: 64%; top: 79%"
+              data-feature="landscape"
+              aria-label="Explore stormwater landscape"
+            >
+              06
+            </button>
+          </div>
+          <div class="plan-caption">
+            <span>Click a marker to explore</span
+            ><span class="legend"
+              ><span><i class="dot"></i>Place</span
+              ><span><i class="dot green"></i>Selected</span></span
+            >
+          </div>
         </div>
       </section>
       <section class="explore shell" id="features">
-        <div class="explore-intro"><div class="kicker">01 / Explore the plan</div><h2>Every line<br />has a reason.</h2><p>The drawing brings active recreation together with comfort, access, and a landscape that has a role in how the site handles rain.</p></div>
+        <div class="explore-intro">
+          <div class="kicker">01 / Explore the plan</div>
+          <h2>Every line<br />has a reason.</h2>
+          <p>
+            The drawing brings active recreation together with comfort, access, and a landscape that
+            has a role in how the site handles rain.
+          </p>
+        </div>
         <div class="feature-grid">
-          <button class="feature" data-feature="access" aria-pressed="false"><span class="feature-num">01</span><span><h3>Accessible arrival</h3><p>A permeable ADA entry ramp and a separate stair approach are shown at the park edge.</p></span></button>
-          <button class="feature" data-feature="shade" aria-pressed="false"><span class="feature-num">02</span><span><h3>Shade &amp; gathering</h3><p>A cantilevered shade structure offers a place to pause alongside the observation platform and seating steps.</p></span></button>
-          <button class="feature" data-feature="flow" aria-pressed="false"><span class="feature-num">03</span><span><h3>Skate the flow</h3><p>Quarter pipes, a grind rail, a fun box, exposed quarter pipes, and a linked central skate area create varied lines through the park.</p></span></button>
-          <button class="feature" data-feature="watch" aria-pressed="false"><span class="feature-num">04</span><span><h3>Room to watch</h3><p>Observation space and stepped seating keep spectators and friends close to the activity.</p></span></button>
-          <button class="feature" data-feature="water" aria-pressed="false"><span class="feature-num">05</span><span><h3>Rain garden</h3><p>The plan identifies a rain garden as part of the landscape around the skating area.</p></span></button>
-          <button class="feature" data-feature="landscape" aria-pressed="false"><span class="feature-num">06</span><span><h3>Water-aware edges</h3><p>Stormwater planters and a detention bowl are labeled along the site, making water management part of the park concept.</p></span></button>
+          <button class="feature" data-feature="access" aria-pressed="false">
+            <span class="feature-num">01</span
+            ><span
+              ><h3>Accessible arrival</h3>
+              <p>
+                A permeable ADA entry ramp and a separate stair approach are shown at the park edge.
+              </p></span
+            >
+          </button>
+          <button class="feature" data-feature="shade" aria-pressed="false">
+            <span class="feature-num">02</span
+            ><span
+              ><h3>Shade & gathering</h3>
+              <p>
+                A cantilevered shade structure offers a place to pause alongside the observation
+                platform and seating steps.
+              </p></span
+            >
+          </button>
+          <button class="feature" data-feature="flow" aria-pressed="false">
+            <span class="feature-num">03</span
+            ><span
+              ><h3>Skate the flow</h3>
+              <p>
+                Quarter pipes, a grind rail, a fun box, exposed quarter pipes, and a linked central
+                skate area create varied lines through the park.
+              </p></span
+            >
+          </button>
+          <button class="feature" data-feature="watch" aria-pressed="false">
+            <span class="feature-num">04</span
+            ><span
+              ><h3>Room to watch</h3>
+              <p>
+                Observation space and stepped seating keep spectators and friends close to the
+                activity.
+              </p></span
+            >
+          </button>
+          <button class="feature" data-feature="water" aria-pressed="false">
+            <span class="feature-num">05</span
+            ><span
+              ><h3>Rain garden</h3>
+              <p>
+                The plan identifies a rain garden as part of the landscape around the skating area.
+              </p></span
+            >
+          </button>
+          <button class="feature" data-feature="landscape" aria-pressed="false">
+            <span class="feature-num">06</span
+            ><span
+              ><h3>Water-aware edges</h3>
+              <p>
+                Stormwater planters and a detention bowl are labeled along the site, making water
+                management part of the park concept.
+              </p></span
+            >
+          </button>
         </div>
       </section>
-      <section class="green-band"><div class="shell"><div class="kicker">02 / A park with more than one purpose</div><h2>Built around movement.<br />Made for everyone.</h2><p class="lead">The concept pairs the energy of a skate park with the everyday needs of a neighborhood gathering place. Its paths, edges, and places to pause matter just as much as the riding surfaces.</p>
-        <div class="principles"><article class="principle"><small>01 — RIDE</small><h3>Find your line</h3><p>A mix of ramps, rails, transitions, and forms gives skaters different ways to move through the space.</p></article><article class="principle"><small>02 — STAY</small><h3>Watch, rest, connect</h3><p>Shade, seating, and an observation area create room for friends, families, and neighbors to spend time here.</p></article><article class="principle"><small>03 — CARE</small><h3>Work with the rain</h3><p>Rain gardens, planters, and a detention bowl are part of the design shown—not added as an afterthought.</p></article></div>
-      </div></section>
-      <section class="walkthrough shell"><div class="section-heading"><div class="kicker">03 / A closer look</div><h2>Follow the<br />park from<br />the edge in.</h2><p>Use this simple walkthrough to read how the elements in the drawing relate to one another.</p></div>
-        <div class="walk-list"><article class="walk-row"><span class="n">01</span><div><h3>Arrive at Brown Memorial</h3><p>The drawing shows stairs and a permeable accessible ramp leading into the park. A welcoming route sets the tone before anyone reaches the skating area.</p></div></article><article class="walk-row"><span class="n">02</span><div><h3>Pause in the shade</h3><p>A cantilevered canopy marks a sheltered gathering point, with observation space and seating steps giving people a place to watch and catch their breath.</p></div></article><article class="walk-row"><span class="n">03</span><div><h3>Move through the skate features</h3><p>The plan labels quarter pipes, a grind rail, a fun box, and exposed quarter pipes around a flowing central arrangement of skate forms.</p></div></article><article class="walk-row"><span class="n">04</span><div><h3>See the landscape at work</h3><p>Rain garden, stormwater planter, and detention bowl labels point to a landscape approach that pairs recreation with water management.</p></div></article></div>
+      <section class="green-band">
+        <div class="shell">
+          <div class="kicker">02 / A park with more than one purpose</div>
+          <h2>Built around movement.<br />Made for everyone.</h2>
+          <p class="lead">
+            The concept pairs the energy of a skate park with the everyday needs of a neighborhood
+            gathering place. Its paths, edges, and places to pause matter just as much as the riding
+            surfaces.
+          </p>
+          <div class="principles">
+            <article class="principle">
+              <small>01 — RIDE</small>
+              <h3>Find your line</h3>
+              <p>
+                A mix of ramps, rails, transitions, and forms gives skaters different ways to move
+                through the space.
+              </p>
+            </article>
+            <article class="principle">
+              <small>02 — STAY</small>
+              <h3>Watch, rest, connect</h3>
+              <p>
+                Shade, seating, and an observation area create room for friends, families, and
+                neighbors to spend time here.
+              </p>
+            </article>
+            <article class="principle">
+              <small>03 — CARE</small>
+              <h3>Work with the rain</h3>
+              <p>
+                Rain gardens, planters, and a detention bowl are part of the design shown—not added
+                as an afterthought.
+              </p>
+            </article>
+          </div>
+        </div>
       </section>
-      <section class="next"><div class="shell next-inner"><div><div class="kicker">A community place in the making</div><h2>Brown Memorial, Chatham.</h2></div><p>This page is a visual reading of the concept drawing. Final details, dimensions, and implementation decisions belong to the project’s design and community process.</p></div></section>
+      <section class="walkthrough shell">
+        <div class="section-heading">
+          <div class="kicker">03 / A closer look</div>
+          <h2>Follow the<br />park from<br />the edge in.</h2>
+          <p>
+            Use this simple walkthrough to read how the elements in the drawing relate to one
+            another.
+          </p>
+        </div>
+        <div class="walk-list">
+          <article class="walk-row">
+            <span class="n">01</span>
+            <div>
+              <h3>Arrive at Brown Memorial</h3>
+              <p>
+                The drawing shows stairs and a permeable accessible ramp leading into the park. A
+                welcoming route sets the tone before anyone reaches the skating area.
+              </p>
+            </div>
+          </article>
+          <article class="walk-row">
+            <span class="n">02</span>
+            <div>
+              <h3>Pause in the shade</h3>
+              <p>
+                A cantilevered canopy marks a sheltered gathering point, with observation space and
+                seating steps giving people a place to watch and catch their breath.
+              </p>
+            </div>
+          </article>
+          <article class="walk-row">
+            <span class="n">03</span>
+            <div>
+              <h3>Move through the skate features</h3>
+              <p>
+                The plan labels quarter pipes, a grind rail, a fun box, and exposed quarter pipes
+                around a flowing central arrangement of skate forms.
+              </p>
+            </div>
+          </article>
+          <article class="walk-row">
+            <span class="n">04</span>
+            <div>
+              <h3>See the landscape at work</h3>
+              <p>
+                Rain garden, stormwater planter, and detention bowl labels point to a landscape
+                approach that pairs recreation with water management.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="next">
+        <div class="shell next-inner">
+          <div>
+            <div class="kicker">A community place in the making</div>
+            <h2>Brown Memorial, Chatham.</h2>
+          </div>
+          <p>
+            This page is a visual reading of the concept drawing. Final details, dimensions, and
+            implementation decisions belong to the project’s design and community process.
+          </p>
+        </div>
+      </section>
     </main>
-    <footer class="footer shell"><span>Brown Memorial Skate Park · Chicago, IL</span><span>Concept visualization · For discussion</span></footer>
-    <div class="modal" id="featureModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><button class="modal-close" aria-label="Close details">×</button><div class="kicker">Plan feature</div><h2 id="modalTitle"></h2><p id="modalText"></p><div class="modal-number" id="modalNumber"></div></div></div>
+    <footer class="footer shell">
+      <span>Brown Memorial Skate Park · Chicago, IL</span
+      ><span>Concept visualization · For discussion</span>
+    </footer>
+    <div
+      class="modal"
+      id="featureModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-box">
+        <button class="modal-close" aria-label="Close details">×</button>
+        <div class="kicker" id="modalKicker">Plan feature</div>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <div class="modal-number" id="modalNumber"></div>
+      </div>
+    </div>
     <script>
       const features = {
-        access: { title: 'Accessible arrival', text: 'The plan labels a permeable ADA entry ramp alongside entry stairs. The route is a central part of how people enter the park.', n: '01 / Arrival' },
-        shade: { title: 'Shade & gathering', text: 'A cantilevered shade structure is set near the entry. The drawing also identifies an observation platform and seating steps for people spending time at the park.', n: '02 / Gather' },
-        flow: { title: 'Skate the flow', text: 'The concept names quarter pipes, a grind rail, a fun box, and exposed quarter pipes, arranged around a connected central skate area.', n: '03 / Skate' },
-        watch: { title: 'Room to watch', text: 'An observation platform and seating steps give friends and spectators a place to stay near the action.', n: '04 / Observe' },
-        water: { title: 'Rain garden', text: 'A rain garden is shown as a long planted edge beside the skate area, bringing landscape and water management into the park plan.', n: '05 / Landscape' },
-        landscape: { title: 'Water-aware edges', text: 'Stormwater planters and a detention bowl are labeled features. Their detailed engineering and performance would be established in later project design.', n: '06 / Stormwater' },
+        access: {
+          title: 'Accessible arrival',
+          text: 'The plan labels a permeable ADA entry ramp alongside entry stairs. The route is a central part of how people enter the park.',
+          n: '01 / Arrival',
+        },
+        shade: {
+          title: 'Shade & gathering',
+          text: 'A cantilevered shade structure is set near the entry. The drawing also identifies an observation platform and seating steps for people spending time at the park.',
+          n: '02 / Gather',
+        },
+        flow: {
+          title: 'Skate the flow',
+          text: 'The concept names quarter pipes, a grind rail, a fun box, and exposed quarter pipes, arranged around a connected central skate area.',
+          n: '03 / Skate',
+        },
+        watch: {
+          title: 'Room to watch',
+          text: 'An observation platform and seating steps give friends and spectators a place to stay near the action.',
+          n: '04 / Observe',
+        },
+        water: {
+          title: 'Rain garden',
+          text: 'A rain garden is shown as a long planted edge beside the skate area, bringing landscape and water management into the park plan.',
+          n: '05 / Landscape',
+        },
+        landscape: {
+          title: 'Water-aware edges',
+          text: 'Stormwater planters and a detention bowl are labeled features. Their detailed engineering and performance would be established in later project design.',
+          n: '06 / Stormwater',
+        },
       };
-      const modal = document.getElementById('featureModal');
-      const title = document.getElementById('modalTitle');
-      const text = document.getElementById('modalText');
-      const number = document.getElementById('modalNumber');
+      const modal = document.getElementById('featureModal'),
+        title = document.getElementById('modalTitle'),
+        text = document.getElementById('modalText'),
+        number = document.getElementById('modalNumber');
       let returnFocus = null;
       function showFeature(id, openDialog = false) {
-        const feature = features[id];
-        if (!feature) return;
-        document.querySelectorAll('.map-pin').forEach((pin) => {
-          const active = pin.dataset.feature === id;
-          pin.classList.toggle('active', active);
-          if (active && openDialog) returnFocus = pin;
+        const f = features[id];
+        if (!f) return;
+        document.querySelectorAll('.map-pin').forEach((x) => {
+          const active = x.dataset.feature === id;
+          x.classList.toggle('active', active);
+          if (active && openDialog) returnFocus = x;
         });
-        document.querySelectorAll('.feature').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.feature === id)));
-        title.textContent = feature.title;
-        text.textContent = feature.text;
-        number.textContent = feature.n;
+        document
+          .querySelectorAll('.feature')
+          .forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.feature === id)));
+        title.textContent = f.title;
+        text.textContent = f.text;
+        number.textContent = f.n;
         if (openDialog) {
           modal.classList.add('open');
           modal.querySelector('.modal-close').focus();
         }
       }
-      document.querySelectorAll('[data-feature]').forEach((element) => element.addEventListener('click', () => showFeature(element.dataset.feature, element.classList.contains('map-pin'))));
+      document
+        .querySelectorAll('[data-feature]')
+        .forEach((el) =>
+          el.addEventListener('click', () =>
+            showFeature(el.dataset.feature, el.classList.contains('map-pin')),
+          ),
+        );
       function closeModal() {
         modal.classList.remove('open');
         if (returnFocus) returnFocus.focus();
       }
       modal.querySelector('.modal-close').addEventListener('click', closeModal);
-      modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
     </script>
   </body>
 </html>
