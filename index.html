@@ -161,6 +161,98 @@
         box-shadow: 0 22px 60px #3d39351a;
         position: relative;
       }
+      .presentation-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        align-items: start;
+        gap: 24px;
+        padding-bottom: 48px;
+      }
+      .presentation-intro {
+        grid-column: 1 / -1;
+        max-width: 780px;
+      }
+      .presentation-intro h2 {
+        font:
+          500 clamp(34px, 4.6vw, 58px) / 0.98 'Space Grotesk',
+          sans-serif;
+        letter-spacing: -0.06em;
+        margin: 14px 0;
+      }
+      .presentation-intro p {
+        max-width: 700px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .render-wrap {
+        min-width: 0;
+        padding: 20px;
+        background: var(--white);
+        border: 1px solid #abcae9;
+        box-shadow: 0 22px 60px #3d39351a;
+      }
+      .render-wrap h3 {
+        margin: 8px 0 0;
+        font:
+          500 24px / 1.1 'Space Grotesk',
+          sans-serif;
+        letter-spacing: -0.04em;
+      }
+      .render-figure {
+        margin: 18px 0 0;
+        border: 1px solid var(--line);
+        line-height: 0;
+      }
+      .render-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1586 / 992;
+        object-fit: cover;
+      }
+      .render-caption {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+      .site-photos-title {
+        margin: 20px 0 9px;
+        color: var(--blue);
+        font:
+          10px 'DM Mono',
+          monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .site-photo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .site-photo {
+        min-width: 0;
+        margin: 0;
+        border: 1px solid var(--line);
+        background: var(--white);
+      }
+      .site-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+      .site-photo figcaption {
+        padding: 8px 9px;
+        color: var(--muted);
+        font:
+          9px / 1.45 'DM Mono',
+          monospace;
+        text-transform: uppercase;
+      }
       .drawing-label {
         display: flex;
         justify-content: space-between;
@@ -533,6 +625,10 @@
           gap: 24px;
           padding-top: 48px;
         }
+        .presentation-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
         .hero-side {
           margin: 0 0 0 auto;
           max-width: 500px;
@@ -582,9 +678,23 @@
         .hero-side {
           padding-left: 17px;
         }
-        .drawing-wrap {
+        .drawing-wrap,
+        .render-wrap {
           padding: 9px 9px 10px;
           margin: 0 -5px;
+        }
+        .presentation-intro h2 {
+          font-size: 36px;
+        }
+        .render-wrap h3 {
+          font-size: 20px;
+        }
+        .site-photo-grid {
+          gap: 7px;
+        }
+        .site-photo figcaption {
+          padding: 7px;
+          font-size: 8px;
         }
         .drawing-label,
         .plan-caption {
@@ -655,10 +765,23 @@
           <a class="jump" href="#plan"><b>↓</b> Explore the park plan</a>
         </aside>
       </section>
-      <section class="shell" id="plan" aria-label="Interactive park concept plan">
+      <section
+        class="presentation-grid shell"
+        id="plan"
+        aria-label="Approved skate park plan and site visualization"
+      >
+        <div class="presentation-intro">
+          <div class="kicker">Brown Memorial · approved design</div>
+          <h2>Read the plan. Picture it in place.</h2>
+          <p>
+            Developed over a year and approved in fall 2026, the plan brings skating, gathering,
+            accessible arrival, and landscape together. Explore the approved drawing alongside a
+            generated perspective and photographs of the Brown Memorial site.
+          </p>
+        </div>
         <div class="drawing-wrap">
           <div class="drawing-label">
-            <span>Brown Memorial · concept plan</span>
+            <span>Brown Memorial · approved design</span>
             <span>For Construction</span>
           </div>
           <div class="plan-stage" id="planStage">
@@ -718,6 +841,43 @@
             >
           </div>
         </div>
+        <article class="render-wrap" aria-labelledby="visualization-title">
+          <div class="kicker">A perspective view</div>
+          <h3 id="visualization-title">The approved design, seen in context.</h3>
+          <figure class="render-figure">
+            <img
+              src="assets/chatham-skate-park-visualization.webp"
+              alt="Generated perspective of a neighborhood skate park with sculpted riding features, shade canopy, planted edges, seating, and skaters"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <p class="render-caption">
+            Generated visualization inspired by the approved plan, bringing its skating, gathering,
+            shade, and landscape ideas into a perspective view.
+          </p>
+          <div class="site-photos-title">Photographed at Brown Memorial</div>
+          <div class="site-photo-grid">
+            <figure class="site-photo">
+              <img
+                src="assets/brown-memorial-site-paved-area.png"
+                alt="Paved area beside grass and mature trees at Brown Memorial"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Paved area, grass, and tree canopy</figcaption>
+            </figure>
+            <figure class="site-photo">
+              <img
+                src="assets/brown-memorial-site-tree-area.png"
+                alt="Temporary orange fencing around a tree beside a paved area at Brown Memorial"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Tree and paved area in a site photo</figcaption>
+            </figure>
+          </div>
+        </article>
       </section>
       <section class="explore shell" id="features">
         <div class="explore-intro">
@@ -885,15 +1045,15 @@
             <h2>Brown Memorial, Chatham.</h2>
           </div>
           <p>
-            This page is a visual reading of the concept drawing. Final details, dimensions, and
-            implementation decisions belong to the project’s design and community process.
+            Developed over a year and approved in fall 2026, this design brings active recreation
+            together with accessible arrival, places to gather, and a water-conscious landscape.
           </p>
         </div>
       </section>
     </main>
     <footer class="footer shell">
       <span>Brown Memorial Skate Park · Chicago, IL</span
-      ><span>Concept visualization · For discussion</span>
+      ><span>Approved plan · Generated visualization</span>
     </footer>
     <div
       class="modal"
